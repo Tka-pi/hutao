@@ -356,7 +356,18 @@
           baseATK+=454;
         }
 
+
+        console.log(baseATK);
+        console.log(gomaHP);
+        console.log(HPtoATK);
+        console.log(u_CRIT);
+        console.log(u_CRITd);
+        console.log(u_pyro);
+
+
         var index=0;
+
+        var alert_label=0;
 
 
         for (var r1=0 ; r1<C1 ; r1++){
@@ -413,13 +424,13 @@
                             }else if(relic_type==3){
                               u_element_burst=0;
                               u_element_heavy=0;
-                              if(series%(13**5)==0){                                
+                              if(series%(5**4)==0){                                
                                 ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
                               }else{
                                 ev=0;
                               }
                             }else if(relic_type==4){
-                              if(series%(13**7)==0){
+                              if(series%(7**4)==0){
                                 ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
                               }else{
                                 ev=0;
@@ -432,9 +443,11 @@
                             EV_vector[index] = ev;
                             if(isNaN(ev)){
                               alert("数値を入力してください");
+                              alert_label=1;
                             }
                             if(ev<0){
                               alert("不確定要素が正しい範囲を超えています");
+                              alert_label=1;
                             }
                             index++;
                         }
@@ -455,6 +468,7 @@
         }
 
         if(max==0){
+          alert_label=1;
           if(relic_type==1){
             alert("火魔女セットがありません");
           }
@@ -511,20 +525,22 @@
         var R2=EV_index[max_index][1];
         var R3=EV_index[max_index][2];
         var R4=EV_index[max_index][3];
-        var R5=EV_index[max_index][4];        
-        
-        result.rows[0].cells[1].innerHTML=relic_name(relic1_matrix[R1][0]);
-        result.rows[1].cells[1].innerHTML=relic_name(relic2_matrix[R2][0]);
-        result.rows[2].cells[1].innerHTML=relic_name(relic3_matrix[R3][0]);
-        result.rows[3].cells[1].innerHTML=relic_name(relic4_matrix[R4][0]);
-        result.rows[4].cells[1].innerHTML=relic_name(relic5_matrix[R5][0]);
+        var R5=EV_index[max_index][4];
 
-        for(var s=2;s<=8;s++){
-          result.rows[0].cells[s].innerHTML=relic1_matrix[R1][s-1];
-          result.rows[1].cells[s].innerHTML=relic2_matrix[R2][s-1];
-          result.rows[2].cells[s].innerHTML=relic3_matrix[R3][s-1];
-          result.rows[3].cells[s].innerHTML=relic4_matrix[R4][s-1];
-          result.rows[4].cells[s].innerHTML=relic5_matrix[R5][s-1];
+        if(alert_label==0){
+          result.rows[0].cells[1].innerHTML=relic_name(relic1_matrix[R1][0]);
+          result.rows[1].cells[1].innerHTML=relic_name(relic2_matrix[R2][0]);
+          result.rows[2].cells[1].innerHTML=relic_name(relic3_matrix[R3][0]);
+          result.rows[3].cells[1].innerHTML=relic_name(relic4_matrix[R4][0]);
+          result.rows[4].cells[1].innerHTML=relic_name(relic5_matrix[R5][0]);
+
+          for(var s=2;s<=8;s++){
+            result.rows[0].cells[s].innerHTML=relic1_matrix[R1][s-1];
+            result.rows[1].cells[s].innerHTML=relic2_matrix[R2][s-1];
+            result.rows[2].cells[s].innerHTML=relic3_matrix[R3][s-1];
+            result.rows[3].cells[s].innerHTML=relic4_matrix[R4][s-1];
+            result.rows[4].cells[s].innerHTML=relic5_matrix[R5][s-1];
+          }
         }
 
         console.log(relic1_matrix);
@@ -961,9 +977,9 @@
         <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
           <div class="panel-body" style="padding: 5px;">不確定要素仮定</div>
         </div>
-        他キャラから受けるバフや、戦闘操作に関する不確定要素を考慮する部分です。このアルゴリズム最大の特徴であり、非常に精確な最適化を実現しています。
+        他キャラから受けるバフや、戦闘操作に関する不確定要素を考慮する部分です。このアルゴリズム最大の特徴であり、非常に精確な最適化を実現します。
         たとえば、炎共鳴を組むときは攻撃+25%としてください。言うまでもなく、旧貴族2や剣闘士2の効果は自動で加算されるので、ここで設定する必要はありません。
-        ただし特例として、死闘の槍の攻撃+%バフは考慮していないためご自身で設定してください。
+        ただし特例として、死闘の槍の攻撃+%バフのみ考慮していないのでご自身で設定してください。
         <div style="margin-top: 15px;">
           <div style="margin-bottom:10px ;">
             想定する元素反応
@@ -1095,7 +1111,7 @@
           </table>
         </div>
         <div style="margin-bottom: 500px;">製作者：<a href="https://www.hoyolab.com/accountCenter/postList?id=136116680">たかぴい@HoYoLAB.com</a>　
-          <div>詳細なコンセプトや仕様については記事で紹介しています。まだ公開したばかりですが、みなさまのお声次第で他のキャラの追加も検討したいと思います。</div>
+          <div>詳細なコンセプトや仕様については記事で紹介しています。感想やフィードバックはこちらにお寄せください。まだ公開したばかりですが、みなさまのお声次第で他のキャラも追加したいと思います。</div>
         </div>        
       </div>
     <div style="margin: 0px 0px 50px;"></div>
