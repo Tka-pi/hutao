@@ -284,7 +284,11 @@
 
         function eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM){
           var totalHP         =15552*(1+(HPrate+gomaHP)*0.01)+HP;
-          var totalATK        =baseATK*(1+(ATKrate+u_ATKrate)*0.01)+ATK+HPtoATK*totalHP*0.01;
+          var ATK_byskill     =totalHP*HPtoATK_byskill*0.01;
+          if　(ATK_byskill>=4*baseATK){
+            ATK_byskill=4*baseATK;
+          }
+          var totalATK        =baseATK*(1+(ATKrate+u_ATKrate)*0.01)+ATK+HPtoATK_bygoma*totalHP*0.01+ATK_byskill;
           var reaction_bonus  =1+25/9*((EM+u_EM)/((EM+u_EM)+1400))+witch;
           var model           =
                                 normal1+
@@ -322,8 +326,10 @@
         u_normal_and_heavy  =Number($("#u_normal_and_heavy").val());
 
 
- 
-        HPtoATK=5.06+0.299*(talent2-6);
+        
+        HPtoATK_byskill=5.06+0.299*(talent2-6);
+        HPtoATK_bygoma=0;
+
         gomaHP=0;
         kizoku=1;
         simenawa=1;
@@ -337,7 +343,7 @@
           u_CRITd+=66.2;
           gomaHP=15+5*weapon_rank;
           baseATK+=608;
-          HPtoATK+=1.4+0.4*weapon_rank;
+          HPtoATK_bygoma+=1.4+0.4*weapon_rank;
         }
         if($("#weapon").val()=="wahak"){
           u_CRIT+=22.1;
@@ -389,6 +395,8 @@
                             simenawa=1;
                             kizoku=1;
                             witch=0;
+
+                            
 
                             if(relic_type==1){
                               if(series%(19**4) == 0 ){
@@ -599,6 +607,7 @@
 
 
         <h1>【胡桃用】聖遺物最適化アルゴリズム</h1>
+        <div style="margin:40px 0px 0px">杯以外はメインオプションとサブオプションを区別せず入力してください。</div>
 
         <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
           <div class="panel-body" style="padding: 5px;">花
