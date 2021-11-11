@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>胡桃用最適化ツール</title>
+    <title>【胡桃用】聖遺物最適化</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -290,13 +290,11 @@
           }
           var totalATK        =baseATK*(1+(ATKrate+u_ATKrate)*0.01)+ATK+HPtoATK_bygoma*totalHP*0.01+ATK_byskill;
           var reaction_bonus  =1+25/9*((EM+u_EM)/((EM+u_EM)+1400))+witch;
-          var model           =
-                                normal1+
+          var model           =normal1+
                                  (1-u_element_heavy+u_element_heavy*vape_or_melt*reaction_bonus)*heavy*u_normal_and_heavy*simenawa
                                 +(1-u_element_burst+u_element_burst*vape_or_melt*reaction_bonus)*burst*u_frequency_burst*kizoku;
           var crit            =totalATK*model*(1+(CRIT+u_CRIT+5)*(CRITd+50+38.4+u_CRITd)*0.01*0.01);
-          return crit;
-          
+          return crit;  
         }
 
         
@@ -600,10 +598,11 @@
       <div style="margin-top: 100px;"></div>
 
 
-        <h1>【胡桃用】聖遺物最適化アルゴリズム</h1>
+        <h1>聖遺物最適化ツール</h1>
+        <h3>【胡桃用】</h3>
         <div style="margin:40px 0px 0px">杯以外はメインオプションとサブオプションを区別せず入力してください。</div>
 
-        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
+        <div class="panel panel-default" style="clear: both; margin: 20px 0px 10px; background: rgb(240, 240, 240);">
           <div class="panel-body" style="padding: 5px;">花
           </div>
         </div><p>
@@ -980,9 +979,10 @@
         <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
           <div class="panel-body" style="padding: 5px;">不確定要素仮定</div>
         </div>
-        他キャラから受けるバフや、戦闘操作に関する不確定要素を考慮する部分です。このアルゴリズム最大の特徴であり、非常に精確な最適化を実現します。
-        たとえば、炎共鳴を組むときは攻撃+25%としてください。言うまでもなく、旧貴族2や剣闘士2の効果は自動で加算されるのでここで設定する必要はありません。
-        ただし、胡桃完凸による会心率バフと死闘の槍の攻撃+%バフのみ考慮していないので、ご自身で設定してください。
+        他キャラから受けるバフや、確率的要素を考慮する部分です。
+        たとえば、炎共鳴を組むときは攻撃+25%としてください。
+        武器や聖遺物の効果は自動で考慮されるので、ここで設定する必要はありません。
+        ただし、胡桃完凸による会心率バフと死闘の槍バフのみ考慮していないためご自身で設定してください。
         <div style="margin-top: 15px;">
           <div style="margin-bottom:10px ;">
             想定する元素反応
@@ -1035,6 +1035,7 @@
         </div>
 
         <button onClick="start();" style="margin: 20px 0px;">最適化</button> 
+        <div>最適化は、キャラ武器ともにLv.90を想定します。</div>
 
         <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
           <div class="panel-body" style="padding: 5px;">結果
@@ -1112,10 +1113,19 @@
               </tr>
             </tbody>
           </table>
-        </div>
-        <div style="margin-bottom: 500px;">製作者：<a href="https://www.hoyolab.com/accountCenter/postList?id=136116680">たかぴい@HoYoLAB.com</a>　
-          <div>コンセプトや仕様については<a href="https://www.hoyolab.com/article/1328361">記事</a>でも紹介しています。感想やフィードバックはこちらにお寄せください。まだ公開したばかりですが、みなさまのお声次第で他のキャラも追加したいと思います。</div>
-        </div>        
+          <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
+            <div class="panel-body" style="padding: 5px;">キャラクターラインナップ
+            </div>
+          </div> 
+  
+  
+  
+          <div>
+            <a href="https://tka-pi.github.io/hutao/"><img src="icon/HuTao_icon.png" alt="胡桃" style="width: 80px; margin-right: 8px;"></a>
+          </div>
+          <div style="margin:40px 0px 500px;">製作者：<a href="https://www.hoyolab.com/accountCenter/postList?id=136116680">たかぴい@HoYoLAB.com</a>　
+            <div>コンセプトや仕様については<a href="https://www.hoyolab.com/article/1328361">記事</a>でも紹介しています。感想やフィードバックはそちらにお寄せください。</div>
+          </div>       
       </div>
     <div style="margin: 0px 0px 50px;"></div>
 
