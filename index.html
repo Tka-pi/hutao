@@ -285,14 +285,16 @@
         function eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM){
           var totalHP         =15552*(1+(HPrate+gomaHP)*0.01)+HP;
           var ATK_byskill     =totalHP*HPtoATK_byskill*0.01;
-          if　(ATK_byskill>=4*baseATK){
+          if (ATK_byskill>=4*baseATK){
             ATK_byskill=4*baseATK;
           }
           var totalATK        =baseATK*(1+(ATKrate+u_ATKrate)*0.01)+ATK+HPtoATK_bygoma*totalHP*0.01+ATK_byskill;
           var reaction_bonus  =1+25/9*((EM+u_EM)/((EM+u_EM)+1400))+witch;
-          var model           =normal1+
-                                 (1-u_element_heavy+u_element_heavy*vape_or_melt*reaction_bonus)*heavy*u_normal_and_heavy*simenawa
-                                +(1-u_element_burst+u_element_burst*vape_or_melt*reaction_bonus)*burst*u_frequency_burst*kizoku;
+          var buff_heavy=1+0.466+0.33+witch_pyro+u_normal_and_heavy+u_pyro+simenawa+hiwatari+sakatobi;
+          var buff_burst=buff_heavy+kizoku+u_burst;
+          var model           =normal1*buff_heavy+
+                                 (1-u_element_heavy+u_element_heavy*vape_or_melt*reaction_bonus)*heavy*buff_heavy
+                                +(1-u_element_burst+u_element_burst*vape_or_melt*reaction_bonus)*burst*u_frequency_burst*buff_burst*n_burst;
           var crit            =totalATK*model*(1+(CRIT+u_CRIT+5)*(CRITd+50+38.4+u_CRITd)*0.01*0.01);
           return crit;  
         }
@@ -315,13 +317,18 @@
         u_element_heavy     =Number($("#u_element_heavy").val())*0.01;
         u_element_burst     =Number($("#u_element_burst").val())*0.01;
         u_frequency_burst   =Number($("#u_frequency_burst").val())*0.1;
+        n_burst=Number($("#n_burst").val());
+        if(n_burst<1){
+          n_burst=1;
+        }
 
         u_ATKrate           =Number($("#u_ATKrate").val());
         u_CRIT              =Number($("#u_CRIT").val());
         u_CRITd             =0;
         u_EM                =Number($("#u_EM").val());
-        u_pyro              =Number($("#u_pyro").val());
-        u_normal_and_heavy  =Number($("#u_normal_and_heavy").val());
+        u_pyro              =Number($("#u_pyro").val())*0.01;
+        u_normal_and_heavy  =Number($("#u_normal_and_heavy").val())*0.01;
+        u_burst=Number($("#u_burst").val())*0.01;
 
 
         
@@ -329,8 +336,6 @@
         HPtoATK_bygoma=0;
 
         gomaHP=0;
-        kizoku=1;
-        simenawa=1;
 
         normal1=64.5+4.8*(talent1-6);
         heavy=186.9+13.9*(talent1-6);
@@ -386,31 +391,36 @@
                             var EM       =relic1_matrix[r1][7]+relic2_matrix[r2][7]+relic3_matrix[r3][7]+relic4_matrix[r4][7]+relic5_matrix[r5][7];
                             var ev=0;
                             
-                            simenawa=1;
-                            kizoku=1;
+                            simenawa=0;
+                            kizoku=0;
                             witch=0;
+                            hiwatari=0;
+                            sakatobi=0;
+                            witch_pyro=0;
 
                             
 
                             if(relic_type==1){
                               if(series%(19**4) == 0 ){
+                                witch_pyro=0.225;
                                 witch=0.15;
                                 ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM)*(1+22.5/(100+46.6+33+u_pyro));
                               }else if(series%(19**2)==0){
+                                witch_pyro=0.15;
                                 if(series%(17**2)==0){
                                   EM+=80;
-                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM)*(1+15/(100+46.6+33+u_pyro));
+                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
                                 }else if(series%(13**2)==0||series%4==0){
                                   ATKrate+=18;
-                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM)*(1+15/(100+46.6+33+u_pyro));
+                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
                                 }else if(series%(11**2)==0){
                                   HPrate+=20;
-                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM)*(1+15/(100+46.6+33+u_pyro));
+                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
                                 }else if(series%(3**2)==0){
-                                  kizoku=1.5;
-                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM)*(1+15/(100+46.6+33+u_pyro));
+                                  kizoku=0.2;
+                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
                                 }else{
-                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM)*(1+15/(100+46.6+33+u_pyro));
+                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
                                 }
                               }else{
                                 ev=0;
@@ -418,21 +428,23 @@
                             }else if(relic_type==2){                              
                               if(series%(13**4)==0){
                                 ATKrate+=18;
-                                simenawa=1.5;
+                                simenawa=0.5;
                                 ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
                               }else{
                                 ev=0;
                               }
                             }else if(relic_type==3){
                               u_element_burst=0;
-                              u_element_heavy=0;
-                              if(series%(5**4)==0){                                
+                              u_element_heavy=0;  
+                              if(series%(5**4)==0){
+                                hiwatari=0.35;                              
                                 ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
                               }else{
                                 ev=0;
                               }
                             }else if(relic_type==4){
                               if(series%(7**4)==0){
+                                sakatobi=0.4;
                                 ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
                               }else{
                                 ev=0;
@@ -1007,6 +1019,10 @@
           <div style="margin-bottom: 10px;">
             元素爆発の蒸発/溶解確率
             <input inputmode="decimal" pattern="\d*"  id="u_element_burst" value="100" style="width: 40px;"/>%
+          </div>
+          <div style="margin-bottom: 10px;">
+            元素爆発で巻き込む敵の平均
+            <input inputmode="decimal" pattern="\d*"  id="n_burst" value="2.8" style="width: 40px;"/>体
           </div>
           <div style="margin-bottom: 30px;">
             重撃10回あたりの元素爆発使用回数
