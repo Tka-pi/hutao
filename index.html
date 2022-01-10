@@ -290,7 +290,7 @@
           }
           var totalATK        =baseATK*(1+(ATKrate+u_ATKrate)*0.01)+ATK+HPtoATK_bygoma*totalHP*0.01+ATK_byskill;
           var reaction_bonus  =1+25/9*((EM+u_EM)/((EM+u_EM)+1400))+witch;
-          var buff_heavy=1+0.466+0.33+witch_pyro+u_normal_and_heavy+u_pyro+simenawa+hiwatari+sakatobi;
+          var buff_heavy=1+0.466+0.33+witch_pyro+u_normal_and_heavy+u_pyro+simenawa+hiwatari+sakatobi+give;
           var buff_burst=buff_heavy+kizoku+u_burst;
           var model           =normal1*buff_heavy+
                                  (1-u_element_heavy+u_element_heavy*vape_or_melt*reaction_bonus)*heavy*buff_heavy
@@ -329,6 +329,7 @@
         u_pyro              =Number($("#u_pyro").val())*0.01;
         u_normal_and_heavy  =Number($("#u_normal_and_heavy").val())*0.01;
         u_burst=Number($("#u_burst").val())*0.01;
+        give=Number($("#give").val())*0.01;
 
 
         
@@ -921,7 +922,7 @@
             <option>6</option>
             <option>7</option>
             <option>8</option>
-            <option>9</option>
+            <option selected>9</option>
             <option>10</option>
             <option>11</option>
           </select>/
@@ -929,7 +930,7 @@
             <option>6</option>
             <option>7</option>
             <option>8</option>
-            <option>9</option>
+            <option selected>9</option>
             <option>10</option>
             <option>11</option>
             <option>12</option>
@@ -939,7 +940,7 @@
             <option>6</option>
             <option>7</option>
             <option>8</option>
-            <option>9</option>
+            <option selected>9</option>
             <option>10</option>
             <option>11</option>
             <option>12</option>
@@ -948,7 +949,7 @@
         </div>
 
         <div style="margin-bottom: 10px;">
-          聖遺物：
+          聖遺物タイプ：
           <select id="relic_type">
             <option value="1">火魔女系</option>
             <option value="2">しめ縄4</option>
@@ -1002,7 +1003,7 @@
         他キャラから受けるバフや、確率的要素を考慮する部分です。
         たとえば、炎共鳴を組むときは攻撃+25%としてください。
         武器や聖遺物の効果は自動で考慮されるので、ここで設定する必要はありません。
-        ただし、胡桃完凸による会心率バフと死闘の槍バフのみ考慮していないためご自身で設定してください。
+        ただし、胡桃完凸による会心率バフと死闘の槍・和璞鳶のバフを考慮していないためご自身で設定してください。
         <div style="margin-top: 15px;">
           <div style="margin-bottom:10px ;">
             想定する元素反応
@@ -1056,6 +1057,10 @@
         <div style="margin-bottom: 10px;">
           元素爆発ダメージ+
           <input inputmode="decimal" pattern="\d*"  id="u_burst" value="0" style="width: 40px;"/>%
+        </div>
+        <div style="margin-bottom: 10px;">
+          与えるダメージ+
+          <input inputmode="decimal" pattern="\d*"  id="give" value="0" style="width: 40px;"/>%
         </div>
 
         <button onClick="start();" style="margin: 20px 0px;">最適化</button> 
