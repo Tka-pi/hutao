@@ -291,7 +291,7 @@
           var totalATK        =baseATK*(1+(ATKrate+u_ATKrate)*0.01)+ATK+HPtoATK_bygoma*totalHP*0.01+ATK_byskill;
           var reaction_bonus  =1+25/9*((EM+u_EM)/((EM+u_EM)+1400))+witch;
           var buff_heavy=1+0.466+0.33+witch_pyro+u_normal_and_heavy+u_pyro+simenawa+hiwatari+sakatobi+give;
-          var buff_burst=buff_heavy+kizoku+u_burst;
+          var buff_burst=1+0.466+0.33+witch_pyro+u_pyro+hiwatari+sakatobi+give+kizoku+u_burst;
           var model           =normal1*buff_heavy+
                                  (1-u_element_heavy+u_element_heavy*vape_or_melt*reaction_bonus)*heavy*buff_heavy
                                 +(1-u_element_burst+u_element_burst*vape_or_melt*reaction_bonus)*burst*u_frequency_burst*buff_burst*n_burst;
@@ -438,7 +438,7 @@
                               u_element_burst=0;
                               u_element_heavy=0;  
                               if(series%(5**4)==0){
-                                hiwatari=0.35;                              
+                                hiwatari=0.35;
                                 ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
                               }else{
                                 ev=0;
