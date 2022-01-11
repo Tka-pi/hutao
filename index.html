@@ -115,6 +115,7 @@
         var cell5 = row1.insertCell(5);
         var cell6 = row1.insertCell(6);
         var cell7 = row1.insertCell(7);
+        var cell8 = row1.insertCell(8);
 
         cell0.innerHTML='<select><option value=19>火魔女</option><option value=17>楽団</option><option value=13>しめ縄</option><option value=11>千岩</option><option value=7>逆飛び</option><option value=5>火渡り</option><option value=3>旧貴族</option><option value=2>剣闘士</option><option value=1>その他</option></select>';
         cell1.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
@@ -124,6 +125,7 @@
         cell5.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
         cell6.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
         cell7.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
+        cell8.innerHTML='<input inputmode="decimal" pattern="\d*"  value=46.6 style="width: 40px;"></input>';
       }
       function delRow4(){
         var relic = document.getElementById('relic4');
@@ -290,8 +292,8 @@
           }
           var totalATK        =baseATK*(1+(ATKrate+u_ATKrate)*0.01)+ATK+HPtoATK_bygoma*totalHP*0.01+ATK_byskill;
           var reaction_bonus  =1+25/9*((EM+u_EM)/((EM+u_EM)+1400))+witch;
-          var buff_heavy=1+0.466+0.33+witch_pyro+u_normal_and_heavy+u_pyro+simenawa+hiwatari+sakatobi+give;
-          var buff_burst=1+0.466+0.33+witch_pyro+u_pyro+hiwatari+sakatobi+give+kizoku+u_burst;
+          var buff_heavy=1+pyro+0.33+witch_pyro+u_normal_and_heavy+u_pyro+simenawa+hiwatari+sakatobi+give;
+          var buff_burst=1+pyro+0.33+witch_pyro+u_pyro+hiwatari+sakatobi+give+kizoku+u_burst;
           var model           =normal1*buff_heavy+
                                  (1-u_element_heavy+u_element_heavy*vape_or_melt*reaction_bonus)*heavy*buff_heavy
                                 +(1-u_element_burst+u_element_burst*vape_or_melt*reaction_bonus)*burst*u_frequency_burst*buff_burst*n_burst;
@@ -390,6 +392,7 @@
                             var CRIT     =relic1_matrix[r1][5]+relic2_matrix[r2][5]+relic3_matrix[r3][5]+relic4_matrix[r4][5]+relic5_matrix[r5][5];
                             var CRITd    =relic1_matrix[r1][6]+relic2_matrix[r2][6]+relic3_matrix[r3][6]+relic4_matrix[r4][6]+relic5_matrix[r5][6];
                             var EM       =relic1_matrix[r1][7]+relic2_matrix[r2][7]+relic3_matrix[r3][7]+relic4_matrix[r4][7]+relic5_matrix[r5][7];
+                            var pyro=relic4_matrix[r4][8]*0.01;
                             var ev=0;
                             
                             simenawa=0;
@@ -562,6 +565,12 @@
             result.rows[3].cells[s].innerHTML=relic4_matrix[R4][s-1];
             result.rows[4].cells[s].innerHTML=relic5_matrix[R5][s-1];
           }
+
+          if(relic4_matrix[R4][8]>0.01){
+             result.rows[3].cells[0].innerHTML="杯(炎)";
+          }else{
+          result.rows[3].cells[0].innerHTML="杯";
+    }
         }
 
         console.log(relic1_matrix);
@@ -621,7 +630,7 @@
 
         <h1>聖遺物最適化ツール</h1>
         <h3>【胡桃】</h3>
-        <div style="margin:40px 0px 0px">杯以外はメインオプションとサブオプションを区別せず入力してください。</div>
+        <div style="margin:40px 0px 0px">メインオプションとサブオプションを区別せず入力してください。</div>
 
         <div class="panel panel-default" style="clear: both; margin: 20px 0px 10px; background: rgb(240, 240, 240);">
           <div class="panel-body" style="padding: 5px;">花
@@ -763,7 +772,7 @@
 
 
         <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
-          <div class="panel-body" style="padding: 5px;">杯：炎バフ46.6%
+          <div class="panel-body" style="padding: 5px;">杯
           </div>
         </div><p>
 
@@ -777,6 +786,7 @@
             <td>会心率%</td>
             <td>会心ダメージ%</td>
             <td>元素熟知</td>
+            <td>炎元素ダメージ%</td>
           </thead>
           <tbody id="relic4">
             <tr>
@@ -800,6 +810,7 @@
               <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
               <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
               <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+              <td><input inputmode="decimal" pattern="\d*"  value="46.6" style="width: 40px;"></input></td>
             </tr>
           </tbody>
         </table>
