@@ -297,8 +297,13 @@
           var model           =normal1*buff_heavy+
                                  (1-u_element_heavy+u_element_heavy*vape_or_melt*reaction_bonus)*heavy*buff_heavy
                                 +(1-u_element_burst+u_element_burst*vape_or_melt*reaction_bonus)*burst*u_frequency_burst*buff_burst*n_burst;
-          var crit            =totalATK*model*(1+(CRIT+u_CRIT+5)*(CRITd+50+38.4+u_CRITd)*0.01*0.01);
-          return crit;  
+          var crit_r=0.01*(CRIT+u_CRIT+5);
+          if(crit_r>=1){
+            crit_r=1;
+          }
+          var crit_d=0.01*(CRITd+u_CRITd+50);
+          var crit=1+crit_r*crit_d;
+          return totalATK*model*crit;
         }
 
         
