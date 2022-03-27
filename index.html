@@ -3,637 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>【胡桃】聖遺物最適化</title>
+    <title>【胡桃】最適装備解析</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
-    <script>
-      window.addEventListener('beforeunload', function(e) {
-          e.returnValue = '聖遺物がリセットされます。よろしいですか？';
-      }, false);
-
-      function AddRow1(){
-        var relic = document.getElementById('relic1');
-        var row_num = relic.rows.length;     
-        var row1  = relic.insertRow(row_num);
-        var cell0 = row1.insertCell(0);
-        var cell1 = row1.insertCell(1);
-        var cell2 = row1.insertCell(2);
-        var cell3 = row1.insertCell(3);
-        var cell4 = row1.insertCell(4);
-        var cell5 = row1.insertCell(5);
-        var cell6 = row1.insertCell(6);
-        var cell7 = row1.insertCell(7);
-
-        cell0.innerHTML='<select><option value=19>火魔女</option><option value=17>楽団</option><option value=13>しめ縄</option><option value=11>千岩</option><option value=7>逆飛び</option><option value=5>火渡り</option><option value=3>旧貴族</option><option value=2>剣闘士</option><option value=1>その他</option></select>';
-        cell1.innerHTML='<input inputmode="decimal" pattern="\d*"  value=4780 style="width: 40px;"></input>';
-        cell2.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell3.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell4.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell5.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell6.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell7.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-      }
-      function delRow1(){
-        var relic = document.getElementById('relic1');
-        var row_num = relic.rows.length;
-        if(row_num>1.5){
-        relic.deleteRow(row_num-1);
-        }
-      }
-
-      function AddRow2(){
-        var relic = document.getElementById('relic2');
-        var row_num = relic.rows.length;
-        var row1 = relic.insertRow(row_num);
-        var cell0 = row1.insertCell(0);
-        var cell1 = row1.insertCell(1);
-        var cell2 = row1.insertCell(2);
-        var cell3 = row1.insertCell(3);
-        var cell4 = row1.insertCell(4);
-        var cell5 = row1.insertCell(5);
-        var cell6 = row1.insertCell(6);
-        var cell7 = row1.insertCell(7);
-
-        cell0.innerHTML='<select><option value=19>火魔女</option><option value=17>楽団</option><option value=13>しめ縄</option><option value=11>千岩</option><option value=7>逆飛び</option><option value=5>火渡り</option><option value=3>旧貴族</option><option value=2>剣闘士</option><option value=1>その他</option></select>';
-        cell1.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell2.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell3.innerHTML='<input inputmode="decimal" pattern="\d*"  value=311 style="width: 40px;"></input>';
-        cell4.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell5.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell6.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell7.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-      }
-      function delRow2(){
-        var relic = document.getElementById('relic2');
-        var row_num = relic.rows.length;
-        if(row_num>1.5){
-        relic.deleteRow(row_num-1);
-        }
-      }
-
-      function AddRow3(){
-        var relic = document.getElementById('relic3');
-        var row_num = relic.rows.length;
-        var row1 = relic.insertRow(row_num);
-        var cell0 = row1.insertCell(0);
-        var cell1 = row1.insertCell(1);
-        var cell2 = row1.insertCell(2);
-        var cell3 = row1.insertCell(3);
-        var cell4 = row1.insertCell(4);
-        var cell5 = row1.insertCell(5);
-        var cell6 = row1.insertCell(6);
-        var cell7 = row1.insertCell(7);
-
-        cell0.innerHTML='<select><option value=19>火魔女</option><option value=17>楽団</option><option value=13>しめ縄</option><option value=11>千岩</option><option value=7>逆飛び</option><option value=5>火渡り</option><option value=3>旧貴族</option><option value=2>剣闘士</option><option value=1>その他</option></select>';
-        cell1.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell2.innerHTML='<input inputmode="decimal" pattern="\d*"  value=46.6 style="width: 40px;"></input>';
-        cell3.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell4.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell5.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell6.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell7.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-      }
-      function delRow3(){
-        var relic = document.getElementById('relic3');
-        var row_num = relic.rows.length;
-        if(row_num>1.5){
-        relic.deleteRow(row_num-1);
-        }
-      }
-
-      function AddRow4(){
-        var relic = document.getElementById('relic4');
-        var row_num = relic.rows.length;
-        var row1 = relic.insertRow(row_num);
-        var cell0 = row1.insertCell(0);
-        var cell1 = row1.insertCell(1);
-        var cell2 = row1.insertCell(2);
-        var cell3 = row1.insertCell(3);
-        var cell4 = row1.insertCell(4);
-        var cell5 = row1.insertCell(5);
-        var cell6 = row1.insertCell(6);
-        var cell7 = row1.insertCell(7);
-        var cell8 = row1.insertCell(8);
-
-        cell0.innerHTML='<select><option value=19>火魔女</option><option value=17>楽団</option><option value=13>しめ縄</option><option value=11>千岩</option><option value=7>逆飛び</option><option value=5>火渡り</option><option value=3>旧貴族</option><option value=2>剣闘士</option><option value=1>その他</option></select>';
-        cell1.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell2.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell3.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell4.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell5.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell6.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell7.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell8.innerHTML='<input inputmode="decimal" pattern="\d*"  value=46.6 style="width: 40px;"></input>';
-      }
-      function delRow4(){
-        var relic = document.getElementById('relic4');
-        var row_num = relic.rows.length;
-        if(row_num>1.5){
-        relic.deleteRow(row_num-1);
-        }
-      }
-
-      function AddRow5(){
-        var relic = document.getElementById('relic5');
-        var row_num = relic.rows.length;
-        var row1 = relic.insertRow(row_num);
-        var cell0 = row1.insertCell(0);
-        var cell1 = row1.insertCell(1);
-        var cell2 = row1.insertCell(2);
-        var cell3 = row1.insertCell(3);
-        var cell4 = row1.insertCell(4);
-        var cell5 = row1.insertCell(5);
-        var cell6 = row1.insertCell(6);
-        var cell7 = row1.insertCell(7);
-
-        cell0.innerHTML='<select><option value=19>火魔女</option><option value=17>楽団</option><option value=13>しめ縄</option><option value=11>千岩</option><option value=7>逆飛び</option><option value=5>火渡り</option><option value=3>旧貴族</option><option value=2>剣闘士</option><option value=1>その他</option></select>';
-        cell1.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell2.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell3.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell4.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell5.innerHTML='<input inputmode="decimal" pattern="\d*"  value=31.1 style="width: 40px;"></input>';
-        cell6.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-        cell7.innerHTML='<input inputmode="decimal" pattern="\d*"  value=0 style="width: 40px;"></input>';
-      }
-      function delRow5(){
-        var relic = document.getElementById('relic5');
-        var row_num = relic.rows.length;
-        if(row_num>1.5){
-        relic.deleteRow(row_num-1);
-        }
-      }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      function start(){
-        let relic1_matrix = [];
-        let allrows1 = relic1.querySelectorAll('tr');
-        allrows1.forEach(tr=>{
-          let allcells1 = tr.querySelectorAll('td');
-          let all =[];
-          allcells1.forEach(td=>{
-            all.push(Number(td.firstElementChild.value));
-          })
-          relic1_matrix.push(all);
-        })
-
-
-        let relic2_matrix = [];
-        let allrows2 = relic2.querySelectorAll('tr');
-        allrows2.forEach(tr=>{
-          let allcells2 = tr.querySelectorAll('td');
-          let all =[];
-          allcells2.forEach(td=>{
-            all.push(Number(td.firstElementChild.value));
-          })
-          relic2_matrix.push(all);
-        })
-
-
-        let relic3_matrix = [];
-        let allrows3 = relic3.querySelectorAll('tr');
-        allrows3.forEach(tr=>{
-          let allcells3 = tr.querySelectorAll('td');
-          let all =[];
-          allcells3.forEach(td=>{
-            all.push(Number(td.firstElementChild.value));
-          })
-          relic3_matrix.push(all);
-        })
-
-
-        let relic4_matrix = [];
-        let allrows4 = relic4.querySelectorAll('tr');
-        allrows4.forEach(tr=>{
-          let allcells4 = tr.querySelectorAll('td');
-          let all =[];
-          allcells4.forEach(td=>{
-            all.push(Number(td.firstElementChild.value));
-          })
-          relic4_matrix.push(all);
-        })
-        
-
-        let relic5_matrix = [];
-        let allrows5 = relic5.querySelectorAll('tr');
-        allrows5.forEach(tr=>{
-          let allcells5 = tr.querySelectorAll('td');
-          let all =[];
-          allcells5.forEach(td=>{
-            all.push(Number(td.firstElementChild.value));
-          })
-          relic5_matrix.push(all);
-        })
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        var C1=relic1_matrix.length;
-        var C2=relic2_matrix.length;
-        var C3=relic3_matrix.length;
-        var C4=relic4_matrix.length;
-        var C5=relic5_matrix.length;
-        var Cx=C1*C2*C3*C4*C5;
-
-
-
-        function eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM){
-          var totalHP         =15552*(1+(HPrate+gomaHP)*0.01)+HP;
-          var ATK_byskill     =totalHP*HPtoATK_byskill*0.01;
-          if (ATK_byskill>=4*baseATK){
-            ATK_byskill=4*baseATK;
-          }
-          var totalATK        =baseATK*(1+(ATKrate+u_ATKrate)*0.01)+ATK+HPtoATK_bygoma*totalHP*0.01+ATK_byskill;
-          var reaction_bonus  =1+25/9*((EM+u_EM)/((EM+u_EM)+1400))+witch;
-          var buff_heavy=1+pyro+0.33+witch_pyro+u_normal_and_heavy+u_pyro+simenawa+hiwatari+sakatobi+give;
-          var buff_burst=1+pyro+0.33+witch_pyro+u_pyro+hiwatari+sakatobi+give+kizoku+u_burst;
-          var model           =normal1*buff_heavy+
-                                 (1-u_element_heavy+u_element_heavy*vape_or_melt*reaction_bonus)*heavy*buff_heavy
-                                +(1-u_element_burst+u_element_burst*vape_or_melt*reaction_bonus)*burst*u_frequency_burst*buff_burst*n_burst;
-          var crit_r=0.01*(CRIT+u_CRIT+5);
-          if(crit_r>=1){
-            crit_r=1;
-          }
-          var crit_d=0.01*(CRITd+u_CRITd+50);
-          var crit=1+crit_r*crit_d;
-          return totalATK*model*crit;
-        }
-
-        
-
-
-        let EV_index=[];
-        let EV_vector=[];
-
-
-        baseATK=106;
-        weapon_rank=Number($("#weapon_rank").val());
-        talent1=Number($("#talent1").val());
-        talent2=Number($("#talent2").val());
-        talent3=Number($("#talent3").val());
-        relic_type=Number($("#relic_type").val());
-
-        vape_or_melt        =Number($("#vape_melt").val());
-        u_element_heavy     =Number($("#u_element_heavy").val())*0.01;
-        u_element_burst     =Number($("#u_element_burst").val())*0.01;
-        u_frequency_burst   =Number($("#u_frequency_burst").val())*0.1;
-        n_burst=Number($("#n_burst").val());
-        if(n_burst<1){
-          n_burst=1;
-        }
-
-        u_ATKrate           =Number($("#u_ATKrate").val());
-        u_CRIT              =Number($("#u_CRIT").val());
-        u_CRITd             =0;
-        u_EM                =Number($("#u_EM").val());
-        u_pyro              =Number($("#u_pyro").val())*0.01;
-        u_normal_and_heavy  =Number($("#u_normal_and_heavy").val())*0.01;
-        u_burst=Number($("#u_burst").val())*0.01;
-        give=Number($("#give").val())*0.01;
-
-
-        
-        HPtoATK_byskill=5.06+0.299*(talent2-6);
-        HPtoATK_bygoma=0;
-
-        gomaHP=0;
-
-        normal1=64.5+4.8*(talent1-6);
-        heavy=186.9+13.9*(talent1-6);
-        burst=400+23.5*(talent3-6);
-
-
-        if($("#weapon").val()=="goma"){
-          u_CRITd+=66.2;
-          gomaHP=15+5*weapon_rank;
-          baseATK+=608;
-          HPtoATK_bygoma+=1.4+0.4*weapon_rank;
-        }
-        if($("#weapon").val()=="wahak"){
-          u_CRIT+=22.1;
-          baseATK+=674;
-        }
-        if($("#weapon").val()=="tennkuu"){
-          u_CRIT+=6+2*weapon_rank;
-          baseATK+=674;
-        }
-        if($("#weapon").val()=="tanaka"){
-          u_EM+=221;
-          baseATK+=454;
-        }
-        if($("#weapon").val()=="sitou"){
-          u_CRIT+=36.8;
-          baseATK+=454;
-        }
-
-
-
-
-        var index=0;
-
-        var alert_label=0;
-        var alert_nan=0;
-        var alert_minus=0;
-
-
-        for (var r1=0 ; r1<C1 ; r1++){
-            for (var r2=0 ; r2<C2 ; r2++){
-                for (var r3=0 ; r3<C3 ; r3++){
-                    for (var r4=0 ; r4<C4 ; r4++){
-                        for (var r5=0 ; r5<C5 ; r5++){
-
-                            var series   =relic1_matrix[r1][0]*relic2_matrix[r2][0]*relic3_matrix[r3][0]*relic4_matrix[r4][0]*relic5_matrix[r5][0];
-                            var HP       =relic1_matrix[r1][1]+relic2_matrix[r2][1]+relic3_matrix[r3][1]+relic4_matrix[r4][1]+relic5_matrix[r5][1];
-                            var HPrate   =relic1_matrix[r1][2]+relic2_matrix[r2][2]+relic3_matrix[r3][2]+relic4_matrix[r4][2]+relic5_matrix[r5][2];
-                            var ATK      =relic1_matrix[r1][3]+relic2_matrix[r2][3]+relic3_matrix[r3][3]+relic4_matrix[r4][3]+relic5_matrix[r5][3];
-                            var ATKrate  =relic1_matrix[r1][4]+relic2_matrix[r2][4]+relic3_matrix[r3][4]+relic4_matrix[r4][4]+relic5_matrix[r5][4];
-                            var CRIT     =relic1_matrix[r1][5]+relic2_matrix[r2][5]+relic3_matrix[r3][5]+relic4_matrix[r4][5]+relic5_matrix[r5][5];
-                            var CRITd    =relic1_matrix[r1][6]+relic2_matrix[r2][6]+relic3_matrix[r3][6]+relic4_matrix[r4][6]+relic5_matrix[r5][6];
-                            var EM       =relic1_matrix[r1][7]+relic2_matrix[r2][7]+relic3_matrix[r3][7]+relic4_matrix[r4][7]+relic5_matrix[r5][7];
-                            var pyro=relic4_matrix[r4][8]*0.01;
-                            var ev=0;
-                            
-                            simenawa=0;
-                            kizoku=0;
-                            witch=0;
-                            hiwatari=0;
-                            sakatobi=0;
-                            witch_pyro=0;
-
-                            
-
-                            if(relic_type==1){
-                              if(series%(19**4) == 0 ){
-                                witch_pyro=0.225;
-                                witch=0.15;
-                                ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
-                              }else if(series%(19**2)==0){
-                                witch_pyro=0.15;
-                                if(series%(17**2)==0){
-                                  EM+=80;
-                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
-                                }else if(series%(13**2)==0||series%4==0){
-                                  ATKrate+=18;
-                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
-                                }else if(series%(11**2)==0){
-                                  HPrate+=20;
-                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
-                                }else if(series%(3**2)==0){
-                                  kizoku=0.2;
-                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
-                                }else{
-                                  ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
-                                }
-                              }else{
-                                ev=0;
-                              }
-                            }else if(relic_type==2){                              
-                              if(series%(13**4)==0){
-                                ATKrate+=18;
-                                simenawa=0.5;
-                                ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
-                              }else{
-                                ev=0;
-                              }
-                            }else if(relic_type==3){
-                              u_element_burst=0;
-                              u_element_heavy=0;  
-                              if(series%(5**4)==0){
-                                hiwatari=0.35;
-                                ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
-                              }else{
-                                ev=0;
-                              }
-                            }else if(relic_type==4){
-                              if(series%(7**4)==0){
-                                sakatobi=0.4;
-                                ev=eval(HP, HPrate, ATK, ATKrate, CRIT, CRITd, EM);
-                              }else{
-                                ev=0;
-                              }
-                            }else{
-                              alert("エラー");
-                            }
-
-                            EV_index[index] = [r1,r2,r3,r4,r5];
-                            EV_vector[index] = ev;
-                            if(isNaN(ev)){
-                              alert_nan=1;
-                              alert_label=1;
-                            }
-                            if(ev<0){
-                              alert_minus=1;
-                              alert_label=1;
-                            }
-                            index++;
-                        }
-                    }
-                }
-            }
-        }
-
-        if(alert_nan==1){
-          alert("数値を入力してください");
-        }if(alert_minus==1){
-          alert("期待値がマイナスになっています");
-        }
-
-
-
-        var max_index=0;
-        var max=-1;
-        for(var j=0 ; j<Cx ; j++){
-            if(max<EV_vector[j]){
-                max=EV_vector[j];
-                max_index=j;
-            }
-        }
-
-        if(max==0){
-          alert_label=1;
-          if(relic_type==1){
-            alert("火魔女セットがありません");
-          }
-          if(relic_type==2){
-            alert("しめ縄4セットがありません");
-          }
-          if(relic_type==3){
-            alert("火渡り4セットがありません");
-          }
-          if(relic_type==4){
-            alert("逆飛び4セットがありません");
-          }          
-        }
-
-
-
-        var result = document.getElementById('result');
-
-
-
-        function relic_name(n){
-          if(n==19){
-            return "火魔女";
-          }
-          if(n==17){
-            return"楽団";
-          }
-          if(n==13){
-            return "しめ縄";
-          }
-          if(n==11){
-            return"千岩";
-          }
-          if(n==7){
-            return "逆飛び";
-          }
-          if(n==5){
-            return"火渡り";
-          }
-          if(n==3){
-            return "旧貴族";
-          }
-          if(n==2){
-            return"剣闘士";
-          }
-          if(n==1){
-            return "その他";
-          }else{
-            return "その他";
-          }
-        }
-
-        var R1=EV_index[max_index][0];
-        var R2=EV_index[max_index][1];
-        var R3=EV_index[max_index][2];
-        var R4=EV_index[max_index][3];
-        var R5=EV_index[max_index][4];
-
-        if(alert_label==0){
-          result.rows[0].cells[1].innerHTML=relic_name(relic1_matrix[R1][0]);
-          result.rows[1].cells[1].innerHTML=relic_name(relic2_matrix[R2][0]);
-          result.rows[2].cells[1].innerHTML=relic_name(relic3_matrix[R3][0]);
-          result.rows[3].cells[1].innerHTML=relic_name(relic4_matrix[R4][0]);
-          result.rows[4].cells[1].innerHTML=relic_name(relic5_matrix[R5][0]);
-
-          for(var s=2;s<=8;s++){
-            result.rows[0].cells[s].innerHTML=relic1_matrix[R1][s-1];
-            result.rows[1].cells[s].innerHTML=relic2_matrix[R2][s-1];
-            result.rows[2].cells[s].innerHTML=relic3_matrix[R3][s-1];
-            result.rows[3].cells[s].innerHTML=relic4_matrix[R4][s-1];
-            result.rows[4].cells[s].innerHTML=relic5_matrix[R5][s-1];
-          }
-
-          if(relic4_matrix[R4][8]>0.01){
-             result.rows[3].cells[0].innerHTML="杯(炎)";
-          }else{
-          result.rows[3].cells[0].innerHTML="杯";
-    }
-        }
-
-        console.log(relic1_matrix);
-        console.log(relic2_matrix);
-        console.log(relic3_matrix);
-        console.log(relic4_matrix);
-        console.log(relic5_matrix);
-        console.log(EV_index);
-        console.log(EV_vector);
-
-
-      }
-    </script>
+    <script src="js/hutao.js"></script>
   </head>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <body>
     <div class="container">
       <div style="margin-top: 100px;"></div>
-
-
-        <h1>聖遺物最適化ツール</h1>
+        <h1>最適装備解析ツール</h1>
         <h3>【胡桃】</h3>
         <div style="margin:40px 0px 0px">メインオプションとサブオプションを区別せず入力してください。</div>
 
@@ -658,14 +37,13 @@
               <tr>
                 <td>
                   <select>
-                    <option value=19>火魔女</option>
-                    <option value=17>楽団</option>
-                    <option value=13>しめ縄</option>
-                    <option value=11>千岩</option>
-                    <option value=7>逆飛び</option>
-                    <option value=5>火渡り</option>
-                    <option value=3>旧貴族</option>
-                    <option value=2>剣闘士</option>
+                    <option value=13>火魔女</option>
+                    <option value=11>楽団</option>
+                    <option value=7>しめ縄</option>
+                    <option value=17>剣闘士</option>
+                    <option value=5>千岩</option>
+                    <option value=3>逆飛び</option>
+                    <option value=2>火渡り</option>
                     <option value=1>その他</option>
                   </select>
                 </td>
@@ -681,416 +59,16 @@
           </table>
         </div>
 
-        <button onClick="AddRow1();" style="margin: -15px 0px;">花を1つ追加</button>
-        <button onClick="delRow1();" style="margin: -15px 0px;">1つ削除</button>
+        <button onClick="add1();" style="margin: -15px 0px;">花を1つ追加</button>
+        <button onClick="del1();" style="margin: -15px 0px;">1つ削除</button>
 
         <div class="panel panel-default" style="clear:both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
           <div class="panel-body" style="padding: 5px;">羽根
           </div>
         </div><p>
 
-        <table class="table table-striped" style="width: auto;">
-          <thead>
-            <td>種類</td>
-            <td>HP</td>
-            <td>HP%</td>
-            <td>攻撃</td>
-            <td>攻撃%</td>
-            <td>会心率%</td>
-            <td>会心ダメージ%</td>
-            <td>元素熟知</td>
-          </thead>
-          <tbody id="relic2">
-            <tr>
-              <td>
-                <select>
-                  <option value=19>火魔女</option>
-                  <option value=17>楽団</option>
-                  <option value=13>しめ縄</option>
-                  <option value=11>千岩</option>
-                  <option value=7>逆飛び</option>
-                  <option value=5>火渡り</option>
-                  <option value=3>旧貴族</option>
-                  <option value=2>剣闘士</option>
-                  <option value=1>その他</option>
-                </select>
-              </td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="311" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <button onClick="AddRow2();" style="margin: -15px 0px;">羽根を1つ追加</button>
-        <button onClick="delRow2();" style="margin: -15px 0px;">1つ削除</button>
-
-
-        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
-          <div class="panel-body" style="padding: 5px;">時計
-          </div>
-        </div><p>
-
-        <table class="table table-striped" style="width: auto;">
-          <thead>
-            <td>種類</td>
-            <td>HP</td>
-            <td>HP%</td>
-            <td>攻撃</td>
-            <td>攻撃%</td>
-            <td>会心率%</td>
-            <td>会心ダメージ%</td>
-            <td>元素熟知</td>
-          </thead>
-          <tbody id="relic3">
-            <tr>
-              <td>
-                <select>
-                  <option value=19>火魔女</option>
-                  <option value=17>楽団</option>
-                  <option value=13>しめ縄</option>
-                  <option value=11>千岩</option>
-                  <option value=7>逆飛び</option>
-                  <option value=5>火渡り</option>
-                  <option value=3>旧貴族</option>
-                  <option value=2>剣闘士</option>
-                  <option value=1>その他</option>
-                </select>
-              </td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="46.6" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <button onClick="AddRow3();" style="margin: -15px 0px;">時計を1つ追加</button>
-        <button onClick="delRow3();" style="margin: -15px 0px;">1つ削除</button>
-
-
-        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
-          <div class="panel-body" style="padding: 5px;">杯
-          </div>
-        </div><p>
-
-        <table class="table table-striped" style="width: auto;">
-          <thead>
-            <td>種類</td>
-            <td>HP</td>
-            <td>HP%</td>
-            <td>攻撃</td>
-            <td>攻撃%</td>
-            <td>会心率%</td>
-            <td>会心ダメージ%</td>
-            <td>元素熟知</td>
-            <td>炎元素ダメージ%</td>
-          </thead>
-          <tbody id="relic4">
-            <tr>
-              <td>
-                <select>
-                  <option value=19>火魔女</option>
-                  <option value=17>楽団</option>
-                  <option value=13>しめ縄</option>
-                  <option value=11>千岩</option>
-                  <option value=7>逆飛び</option>
-                  <option value=5>火渡り</option>
-                  <option value=3>旧貴族</option>
-                  <option value=2>剣闘士</option>
-                  <option value=1>その他</option>
-                </select>
-              </td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="46.6" style="width: 40px;"></input></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <button onClick="AddRow4();" style="margin: -15px 0px;">杯を1つ追加</button>
-        <button onClick="delRow4();" style="margin: -15px 0px;">1つ削除</button>
-
-        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
-          <div class="panel-body" style="padding: 5px;">冠
-          </div>
-        </div><p>
-
-        <table class="table table-striped" style="width: auto; overflow: auto;">
-          <thead>
-            <td>種類</td>
-            <td>HP</td>
-            <td>HP%</td>
-            <td>攻撃</td>
-            <td>攻撃%</td>
-            <td>会心率</td>
-            <td>会心ダメージ%</td>
-            <td>元素熟知</td>
-          </thead>
-          <tbody id="relic5">
-            <tr>
-              <td>
-                <select>
-                  <option value=19>火魔女</option>
-                  <option value=17>楽団</option>
-                  <option value=13>しめ縄</option>
-                  <option value=11>千岩</option>
-                  <option value=7>逆飛び</option>
-                  <option value=5>火渡り</option>
-                  <option value=3>旧貴族</option>
-                  <option value=2>剣闘士</option>
-                  <option value=1>その他</option>
-                </select>
-              </td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="31.1" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-              <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <button onClick="AddRow5();" style="margin: -15px 0px;">冠を1つ追加</button>
-        <button onClick="delRow5();" style="margin: -15px 0px;">1つ削除</button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
-          <div class="panel-body" style="padding: 5px;">装備</div>
-        </div>
-        下の「聖遺物：」選択欄では、火魔女系統（火魔女2+他2や火魔女4）、しめ縄4等から戦闘スタイルを設定してください。
-        火魔女4と火魔女2+他2を比較することは可能ですが、火魔女4としめ縄4を比較する等の使い方はできません。
-        またソロ用等の目的で火渡り4を選択した場合、蒸発/溶解確率を0にする処理を内部で行っていますのでご注意ください。
-        <div style="margin:15px 10px 10px 0px;">
-          <select id="weapon" style="margin-right: 10px;">
-            <option value="goma">護摩の杖</option>
-            <option value="wahak">和璞鳶</option>
-            <option value="tennkuu">天空の脊</option>
-            <option value="tanaka">匣中滅龍</option>
-            <option value="sitou">死闘の槍</option>
-          </select>
-
-          精錬ランク
-          <select id="weapon_rank">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-
-        <div style="margin: 0px 10px 10px 0px;">
-          天賦レベル
-          <select id="talent1">
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option selected>9</option>
-            <option>10</option>
-            <option>11</option>
-          </select>/
-          <select id="talent2">
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option selected>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-            <option>13</option>
-          </select>/
-          <select id="talent3">
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option selected>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-            <option>13</option>
-          </select>
-        </div>
-
-        <div style="margin-bottom: 10px;">
-          聖遺物タイプ：
-          <select id="relic_type">
-            <option value="1">火魔女系</option>
-            <option value="2">しめ縄4</option>
-            <option value="3">火渡り4</option>
-            <option value="4">逆飛び4</option>
-          </select>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
-          <div class="panel-body" style="padding: 5px;">不確定要素仮定</div>
-        </div>
-        他キャラから受けるバフや、確率的要素を考慮する部分です。
-        たとえば、炎共鳴を組むときは攻撃+25%としてください。
-        武器や聖遺物の効果は自動で考慮されるので、ここで設定する必要はありません。
-        ただし、胡桃完凸による会心率バフと死闘の槍・和璞鳶のバフを考慮していないためご自身で設定してください。
-        <div style="margin-top: 15px;">
-          <div style="margin-bottom:10px ;">
-            想定する元素反応
-            <select id="vape_melt">
-              <option value=1.5>蒸発</option>
-              <option value=2>溶解</option>
-            </select> 
-          </div>
-
-          <div style="margin-bottom: 10px;">
-            重撃の蒸発/溶解確率
-            <input inputmode="decimal" pattern="\d*"  id="u_element_heavy" value="100" style="width: 40px;"/>%
-          </div>
-          <div style="margin-bottom: 10px;">
-            元素爆発の蒸発/溶解確率
-            <input inputmode="decimal" pattern="\d*"  id="u_element_burst" value="100" style="width: 40px;"/>%
-          </div>
-          <div style="margin-bottom: 10px;">
-            元素爆発で巻き込む敵の平均
-            <input inputmode="decimal" pattern="\d*"  id="n_burst" value="2.8" style="width: 40px;"/>体
-          </div>
-          <div style="margin-bottom: 30px;">
-            重撃10回あたりの元素爆発使用回数
-            <input inputmode="decimal" pattern="\d*"  id="u_frequency_burst" value="0.8" style="width: 40px;"/>回
-          </div>
-
-        </div>
-        <div style="margin-bottom: 10px;">
-          各種バフの時間平均加算  
-        </div>
-        <div style="margin-bottom: 10px;">
-          攻撃力+
-          <input inputmode="decimal" pattern="\d*"  id="u_ATKrate" value="0" style="width: 40px;"/>%
-        </div>
-        <div style="margin-bottom: 10px;">
-          会心率+
-          <input inputmode="decimal" pattern="\d*"  id="u_CRIT" value="0" style="width: 40px;"/>%
-        </div>
-        <div style="margin-bottom: 10px;">
-          元素熟知+
-          <input inputmode="decimal" pattern="\d*"  id="u_EM" value="0" style="width: 40px;"/>
-        </div>
-        <div style="margin-bottom: 10px;">
-          炎元素ダメージ+
-          <input inputmode="decimal" pattern="\d*"  id="u_pyro" value="0" style="width: 40px;"/>%
-        </div>
-        <div style="margin-bottom: 10px;">
-          通常攻撃・重撃ダメージ+
-          <input inputmode="decimal" pattern="\d*"  id="u_normal_and_heavy" value="0" style="width: 40px;"/>%
-        </div>
-        <div style="margin-bottom: 10px;">
-          元素爆発ダメージ+
-          <input inputmode="decimal" pattern="\d*"  id="u_burst" value="0" style="width: 40px;"/>%
-        </div>
-        <div style="margin-bottom: 10px;">
-          与えるダメージ+
-          <input inputmode="decimal" pattern="\d*"  id="give" value="0" style="width: 40px;"/>%
-        </div>
-
-        <button onClick="start();" style="margin: 20px 0px;">最適化</button> 
-        <div>最適化は、キャラ武器ともにLv.90を想定します。</div>
-
-        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
-          <div class="panel-body" style="padding: 5px;">結果
-          </div>
-        </div> 
-            
-        <div>
           <table class="table table-striped" style="width: auto;">
             <thead>
-              <td></td>
               <td>種類</td>
               <td>HP</td>
               <td>HP%</td>
@@ -1100,7 +78,404 @@
               <td>会心ダメージ%</td>
               <td>元素熟知</td>
             </thead>
-            <tbody id="result">
+            <tbody id="relic2">
+              <tr>
+                <td>
+                  <select>
+                    <option value=13>火魔女</option>
+                    <option value=11>楽団</option>
+                    <option value=7>しめ縄</option>
+                    <option value=17>剣闘士</option>
+                    <option value=5>千岩</option>
+                    <option value=3>逆飛び</option>
+                    <option value=2>火渡り</option>
+                    <option value=1>その他</option>
+                  </select>
+                </td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="311" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+              </tr>
+            </tbody>
+          </table>
+
+        <button onClick="add2();" style="margin: -15px 0px;">羽根を1つ追加</button>
+        <button onClick="del2();" style="margin: -15px 0px;">1つ削除</button>
+
+
+        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
+          <div class="panel-body" style="padding: 5px;">時計
+          </div>
+        </div><p>
+
+          <table class="table table-striped" style="width: auto;">
+            <thead>
+              <td>種類</td>
+              <td>HP</td>
+              <td>HP%</td>
+              <td>攻撃</td>
+              <td>攻撃%</td>
+              <td>会心率%</td>
+              <td>会心ダメージ%</td>
+              <td>元素熟知</td>
+            </thead>
+            <tbody id="relic3">
+              <tr>
+                <td>
+                  <select>
+                    <option value=13>火魔女</option>
+                    <option value=11>楽団</option>
+                    <option value=7>しめ縄</option>
+                    <option value=17>剣闘士</option>
+                    <option value=5>千岩</option>
+                    <option value=3>逆飛び</option>
+                    <option value=2>火渡り</option>
+                    <option value=1>その他</option>
+                  </select>
+                </td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="46.6" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+              </tr>
+            </tbody>
+          </table>
+
+        <button onClick="add3();" style="margin: -15px 0px;">時計を1つ追加</button>
+        <button onClick="del3();" style="margin: -15px 0px;">1つ削除</button>
+
+
+        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
+          <div class="panel-body" style="padding: 5px;">杯
+          </div>
+        </div><p>
+
+          <table class="table table-striped" style="width: auto;">
+            <thead>
+              <td>種類</td>
+              <td>HP</td>
+              <td>HP%</td>
+              <td>攻撃</td>
+              <td>攻撃%</td>
+              <td>会心率%</td>
+              <td>会心ダメージ%</td>
+              <td>元素熟知</td>
+              <td>炎元素ダメージ</td>
+            </thead>
+            <tbody id="relic4">
+              <tr>
+                <td>
+                  <select>
+                    <option value=13>火魔女</option>
+                    <option value=11>楽団</option>
+                    <option value=7>しめ縄</option>
+                    <option value=17>剣闘士</option>
+                    <option value=5>千岩</option>
+                    <option value=3>逆飛び</option>
+                    <option value=2>火渡り</option>
+                    <option value=1>その他</option>
+                  </select>
+                </td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="46.6" style="width: 40px;"></input></td>
+              </tr>
+            </tbody>
+          </table>
+
+        <button onClick="add4();" style="margin: -15px 0px;">杯を1つ追加</button>
+        <button onClick="del4();" style="margin: -15px 0px;">1つ削除</button>
+
+        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
+          <div class="panel-body" style="padding: 5px;">冠
+          </div>
+        </div><p>
+
+          <table class="table table-striped" style="width: auto;">
+            <thead>
+              <td>種類</td>
+              <td>HP</td>
+              <td>HP%</td>
+              <td>攻撃</td>
+              <td>攻撃%</td>
+              <td>会心率%</td>
+              <td>会心ダメージ%</td>
+              <td>元素熟知</td>
+            </thead>
+            <tbody id="relic5">
+              <tr>
+                <td>
+                  <select>
+                    <option value=13>火魔女</option>
+                    <option value=11>楽団</option>
+                    <option value=7>しめ縄</option>
+                    <option value=17>剣闘士</option>
+                    <option value=5>千岩</option>
+                    <option value=3>逆飛び</option>
+                    <option value=2>火渡り</option>
+                    <option value=1>その他</option>
+                  </select>
+                </td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="31.1" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+                <td><input inputmode="decimal" pattern="\d*"  value="0" style="width: 40px;"></input></td>
+              </tr>
+            </tbody>
+          </table>
+
+        <button onClick="add5();" style="margin: -15px 0px;">冠を1つ追加</button>
+        <button onClick="del5();" style="margin: -15px 0px;">1つ削除</button>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
+          <div class="panel-body" style="padding: 5px;">設定</div>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+          聖遺物タイプ：
+          <select id="relic_type">
+            <option value="1">通常</option>
+            <option value="2">しめ縄4</option>
+            <option value="3">火渡り4</option>
+          </select>
+        </div>
+
+        <div style="margin-top: 10px;margin-bottom: 30px;">
+          天賦レベル：
+          <select id="talent1">
+            <option>9</option>
+            <option selected>10</option>
+            <option>11</option>
+          </select>/
+          <select id="talent2">
+            <option selected>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+          </select>/
+          <select id="talent3">
+            <option selected>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom:10px ;">
+          想定する元素反応
+          <select id="vape_melt">
+            <option value=1.5>蒸発</option>
+            <option value=2>溶解</option>
+          </select> 
+        </div>
+
+        <div style="margin-bottom: 10px;">
+          重撃の蒸発/溶解確率
+          <input inputmode="decimal" pattern="\d*"  id="p_h" value="100" style="width: 40px;"/>%
+        </div>
+        <div style="margin-bottom: 10px;">
+          元素爆発の蒸発/溶解確率
+          <input inputmode="decimal" pattern="\d*"  id="p_b" value="100" style="width: 40px;"/>%
+        </div>
+        <div style="margin-bottom: 10px;">
+          元素爆発で巻き込む敵の平均
+          <input inputmode="decimal" pattern="\d*"  id="n_burst" value="2.8" style="width: 40px;"/>体
+        </div>
+        <div style="margin-bottom: 30px;">
+          重撃10回あたりの元素爆発使用回数
+          <input inputmode="decimal" pattern="\d*"  id="burst_coef" value="0.8" style="width: 40px;"/>回
+        </div>
+
+
+        <div style="margin-bottom: 10px; margin-top: 30px;">
+          環境バフ（胡桃完凸効果は無視されるので、ご自身で会心率を設定してください）
+        </div>
+        <div style="margin-bottom: 5px;">
+          攻撃力+
+          <input inputmode="decimal" pattern="\d*"  id="ATK_buff" value="0" style="width: 40px;"/>
+        </div>
+        <div style="margin-bottom: 5px;">
+          攻撃力%+
+          <input inputmode="decimal" pattern="\d*"  id="ATKr_buff" value="0" style="width: 40px;"/>%
+        </div>
+        <div style="margin-bottom: 5px;">
+          会心率+
+          <input inputmode="decimal" pattern="\d*"  id="CRITr_buff" value="0" style="width: 40px;"/>%
+        </div>
+        <div style="margin-bottom: 5px;">
+          会心ダメージ+
+          <input inputmode="decimal" pattern="\d*"  id="CRITd_buff" value="0" style="width: 40px;"/>%
+        </div>
+        <div style="margin-bottom: 5px;">
+          元素熟知+
+          <input inputmode="decimal" pattern="\d*"  id="EM_buff" value="0" style="width: 40px;"/>
+        </div>
+        <div style="margin-bottom: 5px;">
+          通常/重撃/落下ダメージ+
+          <input inputmode="decimal" pattern="\d*"  id="ACT_buff" value="0" style="width: 40px;"/>%
+        </div>
+        <div style="margin-bottom: 5px;">
+          元素爆発ダメージ+
+          <input inputmode="decimal" pattern="\d*"  id="BST_buff" value="0" style="width: 40px;"/>%
+        </div>
+        <div style="margin-bottom: 5px;">
+          炎元素ダメージ+
+          <input inputmode="decimal" pattern="\d*"  id="element_buff" value="0" style="width: 40px;"/>%
+        </div>
+        <div style="margin-bottom: 5px;">
+          与えるダメージ+
+          <input inputmode="decimal" pattern="\d*"  id="ALL_buff" value="0" style="width: 40px;"/>%
+        </div>
+
+
+        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
+          <div class="panel-body" style="padding: 5px;">武器生成
+          </div>
+        </div><p>
+
+          <table class="table table-striped" style="width: auto;">
+            <thead>
+              <td colspan="2">火力比較</td>
+              <td>種類</td>
+              <td>精錬ランク</td>
+            </thead>
+            <tbody id="weapon">
+              <tr>
+                <td><input type="radio" name="compare1" id="compare1" value="0"/></td>
+                <td><input type="radio" name="compare2" id="compare2" value="0"/></td>
+                <td>
+                  <select>
+                    <option value="1">護摩の杖</option>
+                    <option value="2">和璞鳶</option>
+                    <option value="3">天空の脊</option>
+                    <option value="4">匣中滅龍</option>
+                    <option value="5">死闘の槍</option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option value=1 selected>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        <button onClick="add6();" style="margin: -15px 0px;">武器を1つ追加</button>
+        <button onClick="del6();" style="margin: -15px 0px;">1つ削除</button>
+
+
+
+        <div style="margin-top: 25px;">
+          死闘の槍で参照：スキル時間中まわりに敵が2体以上いる割合
+          <input id="alpha" type="range" min="0" max="1" style="width: 200px;" step="0.01" value="0.80">
+        </div>
+
+        <div style="margin-top: 25px;">
+          主な仮定<br>
+          ・武器キャラともにLv.90<br>
+          ・HPが常に50%以下<br>
+          ・和璞鳶のバフが常に最大<br>
+          ・敵が常に水または火元素の影響下にある（溶解を想定するときは解除）
+        </div>
+        <button onClick="start();" style="margin-top: 10px;">最適化+武器比較</button>
+        
+
+
+
+
+
+
+
+        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
+          <div class="panel-body" style="padding: 5px;">結果
+          </div>
+        </div> 
+        武器ごとに最適化された火力を表示します。
+
+        <div style="margin-bottom: 50px;">
+          <table class="table table-striped" style="width: auto;">
+            <thead>
+              <td>比較</td>
+              <td>武器</td>
+              <td>精錬ランク</td>
+              <td>最適化火力</td>
+            </thead>
+            <tbody id="power">
+            </tbody>
+          </table>
+        </div>
+
+        武器AまたはBのうち弱い方が他方と厳密に同じ火力を出すために必要なステータスです。4つのどれか一つを満たせばOKです。
+
+
+        <div style="margin-bottom: 50px;">
+          <table class="table table-striped" style="width: auto;">
+            <thead>
+              <td></td>
+              <td>HP%</td>
+              <td>会心率%</td>
+              <td>会心ダメージ%</td>
+              <td>元素熟知</td>
+            </thead>
+            <tbody id="power_shift">
+              <tr>
+                <td>AB間火力差換算</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div>
+          <table class="table table-striped" style="width: auto;">
+            <thead id="result1_head">
+              <td>A</td>
+              <td>種類</td>
+              <td>HP</td>
+              <td>HP%</td>
+              <td>攻撃</td>
+              <td>攻撃%</td>
+              <td>会心率%</td>
+              <td>会心ダメージ%</td>
+              <td>元素熟知</td>
+            </thead>
+            <tbody id="result1">
               <tr>
                 <td>花</td>
                 <td></td>
@@ -1158,26 +533,103 @@
               </tr>
             </tbody>
           </table>
-          <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
-            <div class="panel-body" style="padding: 5px;">キャラクターラインナップ
-            </div>
-          </div> 
-  
-  
-          <div>
-            <a href="https://tka-pi.github.io/hutao/"><img src="icon/HuTao_icon.png" alt="胡桃" style="width: 80px; margin:0px 8px 8px 0px;"></a>
-            <a href="https://tka-pi.github.io/Shougun/"><img src="icon/Shougun.png" alt="雷電将軍" style="width: 80px; margin:0px 8px 8px 0px;"></a>
-            <a href="https://tka-pi.github.io/Tartaglia/"><img src="icon/Tartaglia.png" alt="タルタリヤ" style="width: 80px; margin:0px 8px 8px 0px;"></a>
-            <a href="https://tka-pi.github.io/Ayaka/"><img src="icon/Ayaka_icon.png" alt="神里綾華" style="width: 80px; margin:0px 8px 8px 0px;"></a>
-            <a href="https://tka-pi.github.io/Eula"><img src="icon/Eula_icon.png" alt="エウルア" style="width: 80px; margin:0px 8px 8px 0px;"></a>
-            <a href="https://tka-pi.github.io/Albedo"><img src="icon/Albedo_icon.png" alt="アルベド" style="width: 80px; margin:0px 8px 8px 0px;"></a>
-            <a href="https://tka-pi.github.io/Xiao"><img src="icon/Xiao.png" alt="ショウ" style="width: 80px; margin:0px 8px 8px 0px;"></a>
-            <a href="https://tka-pi.github.io/Yanfei/"><img src="icon/Yanfei_icon.png" alt="煙緋" style="width: 80px; margin:0px 8px 8px 0px;"></a>
+        </div>
+            
+        <div>
+          <table class="table table-striped" style="width: auto;">
+            <thead id="result2_head">
+              <td>B</td>
+              <td>種類</td>
+              <td>HP</td>
+              <td>HP%</td>
+              <td>攻撃</td>
+              <td>攻撃%</td>
+              <td>会心率%</td>
+              <td>会心ダメージ%</td>
+              <td>元素熟知</td>
+            </thead>
+            <tbody id="result2">
+              <tr>
+                <td>花</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>羽根</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>時計</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>杯</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>冠</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel panel-default" style="clear: both; margin: 60px 0px 10px; background: rgb(240, 240, 240);">
+          <div class="panel-body" style="padding: 5px;">キャラクターラインナップ
           </div>
-          <div style="margin:40px 0px 500px;">製作者：<a href="https://www.hoyolab.com/accountCenter/postList?id=136116680">たかぴい@HoYoLAB.com</a>　
-            <div>コンセプトや仕様については<a href="https://www.hoyolab.com/article/1328361">記事</a>でも紹介しています。感想やフィードバックはそちらにお寄せください。</div>
-          </div>
+        </div> 
+
+
+
+        <div>
+          <a href="https://tka-pi.github.io/hutao/"><img src="icon/HuTao_icon.png" alt="胡桃" style="width: 80px; margin:0px 8px 8px 0px;"></a>
+          <a href="https://tka-pi.github.io/Shougun/"><img src="icon/Shougun.png" alt="雷電将軍" style="width: 80px; margin:0px 8px 8px 0px;"></a>
+          <a href="https://tka-pi.github.io/Tartaglia/"><img src="icon/Tartaglia.png" alt="タルタリヤ" style="width: 80px; margin:0px 8px 8px 0px;"></a>
+          <a href="https://tka-pi.github.io/Ayaka/"><img src="icon/Ayaka_icon.png" alt="神里綾華" style="width: 80px; margin:0px 8px 8px 0px;"></a>
+          <a href="https://tka-pi.github.io/Eula"><img src="icon/Eula_icon.png" alt="エウルア" style="width: 80px; margin:0px 8px 8px 0px;"></a>
+          <a href="https://tka-pi.github.io/Albedo"><img src="icon/Albedo_icon.png" alt="アルベド" style="width: 80px; margin:0px 8px 8px 0px;"></a>
+          <a href="https://tka-pi.github.io/Xiao"><img src="icon/Xiao.png" alt="ショウ" style="width: 80px; margin:0px 8px 8px 0px;"></a>
+          <a href="https://tka-pi.github.io/Yanfei/"><img src="icon/Yanfei_icon.png" alt="煙緋" style="width: 80px; margin:0px 8px 8px 0px;"></a>
+        </div>
+        <div style="margin:40px 0px 500px;">製作者：<a href="https://www.hoyolab.com/accountCenter/postList?id=136116680">たかぴい@HoYoLAB.com</a>　
+          <div>コンセプトや仕様については<a href="https://www.hoyolab.com/article/1328361">記事</a>でも紹介しています。感想やフィードバックはそちらにお寄せください。</div>
+        </div>
       </div>
+
     <div style="margin: 0px 0px 50px;"></div>
 
     
